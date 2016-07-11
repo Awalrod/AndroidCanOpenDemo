@@ -145,7 +145,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(isValidName(name)){
                         addProfileInfo(name, index, subindex, min, max);
                     }else{
-                        Toast.makeText(instance, "ERROR: Invalid profile name. Only alphanumeric characters allowed",
+                        Toast.makeText(instance, "ERROR: Invalid profile name. Only alphanumeric characters allowed(a-z,0-9)",
                                 Toast.LENGTH_LONG).show();
                     }
 
