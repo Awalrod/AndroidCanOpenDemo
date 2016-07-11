@@ -33,6 +33,11 @@ import java.util.ArrayList;
 import gcdc.tabbedapp1.controllers.GaugeController;
 import gcdc.tabbedapp1.controllers.TextController;
 
+/*
+YOU SHOULD SEE THIS COMMENT
+ */
+
+
 public class MainActivity extends AppCompatActivity{
 
 
