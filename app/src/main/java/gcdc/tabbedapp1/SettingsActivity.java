@@ -102,6 +102,13 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    public boolean isValidName(String name){
+        String pattern = "\\w+";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(name);
+        return m.matches();
+    }
+
     public boolean isValidIP(String ip){
         String pattern = "(\\d+\\.){3}(\\d+)";
         Pattern r = Pattern.compile(pattern);
@@ -135,8 +142,13 @@ public class SettingsActivity extends AppCompatActivity {
                     Float min = Float.parseFloat(edit_min.getText().toString().trim());
                     EditText edit_max = (EditText) gridLayout.findViewById(R.id.edit_max);
                     Float max = Float.parseFloat(edit_max.getText().toString().trim());
+                    if(isValidName(name)){
+                        addProfileInfo(name, index, subindex, min, max);
+                    }else{
+                        Toast.makeText(instance, "ERROR: Invalid profile name. Only alphanumeric characters allowed",
+                                Toast.LENGTH_LONG).show();
+                    }
 
-                    addProfileInfo(name, index, subindex, min, max);
                 }catch(NumberFormatException e){
                     Toast.makeText(instance, "ERROR: Invalid Number",
                             Toast.LENGTH_LONG).show();
