@@ -44,3 +44,7 @@ Profiles contain infor regarding the information that nodes will send. The Java-
 |Min     |Minimum expected value. This is used to display the gauge.|
 |Max     |Maximum expected value. This is used to display the gauge.|  
 
+All of your current profiles are listed underneath the "Add Profile" button. To edit or delete and existing profile click the "Edit" or "Delete" buttong below the profile information.
+
+#Links
+The fuel gauge widget was originally created in this repository: https://github.com/tethridge/fuel-gauge
