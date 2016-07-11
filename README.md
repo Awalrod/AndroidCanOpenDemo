@@ -11,5 +11,5 @@ We have a raspberry pi connected to two nodes sending temperature, voltage, and 
 
 ##Application Description
 ###The Main Screen
-![main screen]( AndroidCanOpenDemo/images/appMainScreen.png )
+![main screen]( https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appMainScreen.png )
 The main screen is 10 monitors in different tabs that can be set up to monitor different profiles. You can 
