@@ -11,5 +11,11 @@ We have a raspberry pi connected to two nodes sending temperature, voltage, and 
 
 ##Application Description
 ###The Main Screen
-![main screen]( https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appMainScreen.png )
-The main screen is 10 monitors in different tabs that can be set up to monitor different profiles. You can 
+![main screen]( https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appMainScreen.png )  
+
+The main screen is 10 monitors in different tabs that can be set up to monitor different profiles. What profiles are and how to create/edit/delete them is covered in the [Settings](#settings). Clicking the option menu below the gauge shows a menu of all profiles that have been created. You can set which profile the gauge should monitor here.
+![profile dropdown](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appProfileDropdown.png)  
+
+
+
+###Settings
