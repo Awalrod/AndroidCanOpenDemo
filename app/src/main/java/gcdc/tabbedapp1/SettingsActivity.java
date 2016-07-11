@@ -50,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity {
         makeProfileFragments();
     }
 
+    //Loads profile info and displays them as fragments
+    //used when you want to update information
     public void makeProfileFragments(){
         for(ProfileFragment profileFragment: profileFragments){
             profileFragment.removeSelf();
@@ -88,6 +90,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    //Save info before application stops
     @Override
     public void onPause(){
         super.onPause();
@@ -102,13 +105,13 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+
     public boolean isValidName(String name){
         String pattern = "\\w+";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(name);
         return m.matches();
     }
-
     public boolean isValidIP(String ip){
         String pattern = "(\\d+\\.){3}(\\d+)";
         Pattern r = Pattern.compile(pattern);
@@ -122,6 +125,7 @@ public class SettingsActivity extends AppCompatActivity {
         return m.matches();
     }
 
+    //Displays dialog containing name, index, subindex, min, and max fields
     public void add_profile_clicked(View view){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final GridLayout gridLayout = (GridLayout)getLayoutInflater().inflate(R.layout.add_dialog,null);
@@ -143,7 +147,7 @@ public class SettingsActivity extends AppCompatActivity {
                     EditText edit_max = (EditText) gridLayout.findViewById(R.id.edit_max);
                     Float max = Float.parseFloat(edit_max.getText().toString().trim());
                     if(isValidName(name)){
-                        addProfileInfo(name, index, subindex, min, max);
+                        addProfileInfo(name, index, subindex, min, max); // actually adds the info
                     }else{
                         Toast.makeText(instance, "ERROR: Invalid profile name. Only alphanumeric characters allowed(a-z,0-9)",
                                 Toast.LENGTH_LONG).show();
@@ -156,7 +160,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Do Nothing
@@ -166,6 +169,9 @@ public class SettingsActivity extends AppCompatActivity {
         alert.show();
     }
 
+    //saves all the info from the dialog box into a file of the same name as the profile
+    //this is why profiles must be alphanumeric
+    //then it remakes the profile fragments
     private void addProfileInfo(String name, Integer index, Integer subindex, Float min, Float max){
         SharedPreferences sharedPreferences1 = getSharedPreferences(GlobalConstantContainer.SETTINGS_FILENAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences1.edit();
@@ -197,16 +203,21 @@ public class SettingsActivity extends AppCompatActivity {
         editor2.putFloat(GlobalConstantContainer.MAX_KEY,max);
         editor2.apply();
 
-        makeProfileFragments();
+        makeProfileFragments();//remake the profile fragments to update the screen
     }
 
+    //Brings up dialog box with profile info already loaded in
     public void edit_profile_clicked(View view) {
+        //this chunk finds the profile fragment that owns the edit button
+        //every edit button fires the same method, this one
+        //unfortunately I don't know any way around this
         ProfileFragment profileToEdit = null;
         for(ProfileFragment profileFragment : profileFragments){
             if(profileFragment.ownerOfButton((Button)view)){
                 profileToEdit = profileFragment;
             }
         }
+
         final String oldName = profileToEdit.getName();
         SharedPreferences settings = getSharedPreferences(oldName,Context.MODE_PRIVATE);
         String oldIndex = Integer.toString(settings.getInt(GlobalConstantContainer.INDEX_KEY,0),16);
@@ -215,7 +226,7 @@ public class SettingsActivity extends AppCompatActivity {
         String oldMax = Float.toString(settings.getFloat(GlobalConstantContainer.MAX_KEY,0));
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        final GridLayout gridLayout = (GridLayout)getLayoutInflater().inflate(R.layout.add_dialog,null);
+        final GridLayout gridLayout = (GridLayout)getLayoutInflater().inflate(R.layout.add_dialog,null);//we can inflate the add_dialog here because we don't change the layout
         final EditText edit_name = (EditText) gridLayout.findViewById(R.id.edit_name);
         edit_name.setText(oldName);
         final EditText edit_index = (EditText) gridLayout.findViewById(R.id.edit_index);
@@ -232,15 +243,10 @@ public class SettingsActivity extends AppCompatActivity {
                 try {
 
                     String name = edit_name.getText().toString().trim();
-
                     Integer index = Integer.parseInt(edit_index.getText().toString().trim(),16);
-
                     Integer subindex = Integer.parseInt(edit_subindex.getText().toString().trim());
-
                     Float min = Float.parseFloat(edit_min.getText().toString().trim());
-
                     Float max = Float.parseFloat(edit_max.getText().toString().trim());
-
                     editProfileInfo(oldName, name, index, subindex, min, max);
                 }catch(NumberFormatException e){
                     Toast.makeText(instance, "ERROR: Invalid Number",
@@ -249,7 +255,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //Do Nothing
@@ -258,6 +263,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         alert.show();
     }
+
+    //opens the profile file and rewrites its values
+    //also changes the filename in the filenames list in case the name was changed
     public void editProfileInfo(String oldName, String name, Integer index, Integer subindex, Float min, Float max){
         SharedPreferences sharedPreferences1 = getSharedPreferences(GlobalConstantContainer.SETTINGS_FILENAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences1.edit();
@@ -280,8 +288,8 @@ public class SettingsActivity extends AppCompatActivity {
         editor2.apply();
 
         makeProfileFragments();
-
     }
+
 
     public void delete_profile_clicked(View view){
         ProfileFragment profileToBeRemoved = null;
@@ -313,15 +321,10 @@ public class SettingsActivity extends AppCompatActivity {
         profileFragments.remove(profileToBeRemoved);
     }
 
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()== android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
+    /**Description
+     * Contains all the views associated with the profile fragment
+     * doesn't actually store the values in those views
+     */
     public static class ProfileFragment extends Fragment{
 
         TextView name_text;
@@ -368,10 +371,14 @@ public class SettingsActivity extends AppCompatActivity {
             return rootView;
         }
 
+        //When the edit or delete button is clicked it fires a method in SettingsActivity
+        //To figure out which fragment owns the button it uses this method
         public boolean ownerOfButton(Button button){
             return edit.equals(button) || delete.equals(button);
         }
 
+        //called when we want to delete a profile fragment
+        //suprisingly simple
         public void removeSelf(){
             getActivity().getFragmentManager().beginTransaction().remove(this).commit();
         }
