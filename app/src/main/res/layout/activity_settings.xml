@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="gcdc.tabbedapp1.SettingsActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="false">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Profile"
+        android:id="@+id/add_profile"
+        android:longClickable="false"
+        android:onClick="add_profile_clicked"
+
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:layout_below="@+id/ip_edit"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ip_edit"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="IP Address"
+        android:minEms="7"
+        android:selectAllOnFocus="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/port_edit"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ip_edit"
+        android:layout_toEndOf="@+id/ip_edit"
+        android:text="Port Number"
+        android:minEms="7"
+        android:selectAllOnFocus="true" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/add_profile"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linear_layout"></LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
