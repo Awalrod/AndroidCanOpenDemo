@@ -34,11 +34,13 @@ The settings screen contains the controls for the profiles and network. The firs
 ###Profiles
 Profiles contain infor regarding the information that nodes will send. The Java-canopen interface will populate the object dictionary with information from these nodes. Profiles contain info about a specific subentry.  
 
+![add profile](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appAddProfileDialog.png)
+
 |Field   |Description|
 |:------:|:----------|
 |Name    |Chosen name for profile. Can be any alphanumeric character.|
 |Index   |Index of Object Dictionary entry in hexadecimal.|
-|Subindex|Subindex for subentry of the entry at the given Index. This contains the actual you will use.|
+|Subindex|Subindex for subentry of the entry at the given Index. This contains the actual value you will use.|
 |Min     |Minimum expected value. This is used to display the gauge.|
 |Max     |Maximum expected value. This is used to display the gauge.|  
 
