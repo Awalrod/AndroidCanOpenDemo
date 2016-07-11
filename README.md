@@ -20,6 +20,7 @@ Slide left or right to view other monitors. Up to 10 different profiles may be m
 
 The start and stop buttons make the monitor start or stop listening to the specified profile.
 
+![listening to profile](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/appMainListening.png)
 
 
 ###Settings
