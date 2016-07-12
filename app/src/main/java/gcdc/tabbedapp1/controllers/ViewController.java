@@ -11,9 +11,12 @@ import com.gcdc.canopen.SubEntry;
 /**
  * Created by gcdc on 6/14/16.
  */
+
+/**Description
+ *All the view controllers inherit from this class
+ * extends AsyncTask because network processes can't be run on the UI thread
+ */
 public abstract class ViewController extends AsyncTask<Object,Integer,Object> implements CanOpenListener {
-
-
     int index;
     int subindex;
     CanOpen canOpen;
@@ -24,6 +27,7 @@ public abstract class ViewController extends AsyncTask<Object,Integer,Object> im
         this.subindex = subindex;
     }
 
+    //Stops listening to subentry
     public void stopListening(){
         try {
             canOpen.getObjDict().getSubEntry(index,subindex).removeListener(this);
@@ -32,6 +36,7 @@ public abstract class ViewController extends AsyncTask<Object,Integer,Object> im
         }
     }
 
+    //this runs in the background because canOpen.start() uses the network
     @Override
     protected Object doInBackground(Object[] params) {
         try {
@@ -43,13 +48,17 @@ public abstract class ViewController extends AsyncTask<Object,Integer,Object> im
         }
         return null;
     }
+
+    //onProgressUpdate(Integer... currentValue) is ran on the UI thread
+    //children classes will implement this method for unique functionality
     @Override
     protected abstract void onProgressUpdate(Integer... currentValue);
+
 
     @Override
     public void onObjDictChange(SubEntry se) {
         try {
-            publishProgress(se.getInt());
+            publishProgress(se.getInt());//publishProgress is inherited from AsyncTask and calls onProgress update on the UI thread
         } catch (Exception e) {
             e.printStackTrace();
         }

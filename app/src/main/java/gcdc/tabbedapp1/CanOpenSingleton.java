@@ -39,7 +39,7 @@ public class CanOpenSingleton {
         System.out.println("Got driver manager");
         Driver driver =dm.getDriver();
         System.out.println("Got driver");
-        ObjectDictionary objDict = DefaultOD.create(0x22);
+        ObjectDictionary objDict = DefaultOD.create(0x22);//The node ID being used
         instance = new CanOpen(driver,objDict,0x22,true);
         System.out.println("Got Canopen");
     }
