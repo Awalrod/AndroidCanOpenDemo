@@ -7,11 +7,31 @@ The application listens to events fired by changes in the object dictionary and 
 demonstrate a potential usage of the java-canopen package.  
 
 ##Installation
-If you have Android studio installed:  
-Click File->New->Project from Vesion Control->GitHub  
-![menu tree](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/ImportFromVersionControl.png)
+###If you have Android studio installed:  
+1. Click File->New->Project from Vesion Control->GitHub 
+2. Enter the correct info into the dialog box. 
+![menu tree](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/ImportFromVersionControl.png)  
+ 
+![clone repository](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/CloneRepository.png)
+3. Attach your device via usb and run the app on the device. Your device must developer options turned on to work correctly.
 
-
+###If you do not have android studio installed:
+####Step 1: Acquire APK
+1. Open a terminal and change directories to wherever you want to keep the `AndroidCanOpenDemo` directory
+2. Type the following commands:
+.. `git clone https://github.com/Awalrod/AndroidCanOpenDemo`  
+.. `cd AndroidCanOpenDemo`
+3. If you have the `ANDROID_HOME` environment variable already set, run `./gradlew assembleDebug`
+4. If you do not have the `ANDROID_HOME` environment variable already set, you need to find the location of your SDK.  
+.. Once you've found it, one of the two following commands will work:
+.. `export ANDROID_HOME=/path/to/SDK`
+.. 
+.. or
+..
+.. `echo sdk.dir=/path/to/SDK > /path/to/AndroidCanOpenDemo/local.properties`  
+..
+.. The second command will save the location.
+.. Run `./gradlew assembleDebug`
 
 ##Network Setup[](TODO: Name busmaster and provide links)[](TODO: Get name of board being used)
 We have a raspberry pi connected to two nodes sending temperature, voltage, and current data over a can network. A busmaster program iscontrolling the network from the raspberry pi. The raspberry pi is also running [socat](http://www.dest-unreach.org/socat/),a networking tool that is being used to send messages on wifi. The android app will no work correctly unless both thebusmaster and socat script are running correctly.  
