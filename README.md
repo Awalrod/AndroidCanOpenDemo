@@ -1,13 +1,22 @@
 # AndroidCanOpenDemo
 A demo app that monitors a canopen network
-##Synopsis[](TODO: Name the java-canopen package and provide links)
+##Synopsis
 This app is part of a [larger project](https://github.com/mpcrowe/canopen-raspberrypi) to control and monitor canopen networks from the conveniance of a mobile device.  
 A [Java-CanOpen interface](https://github.com/Awalrod/CanOpenJavaLibrary)  listens to the network and updates the object dictionary accordingly. The subentries and values in them are represented by [profiles](#profiles) within the app
 The application listens to events fired by changes in the object dictionary and acts upon them. This app is meant to 
 demonstrate a potential usage of the java-canopen package.  
 
+##Installation
+If you have Android studio installed:  
+Click File->New->Project from Vesion Control->GitHub  
+![menu tree](https://github.com/Awalrod/AndroidCanOpenDemo/blob/master/images/ImportFromVersionControl.png)
+
+
+
 ##Network Setup[](TODO: Name busmaster and provide links)[](TODO: Get name of board being used)
-We have a raspberry pi connected to two nodes sending temperature, voltage, and current data over a can network. A busmaster program iscontrolling the network from the raspberry pi. The raspberry pi is also running [socat](http://www.dest-unreach.org/socat/),a networking tool that is being used to send messages on wifi. The android app will no work correctly unless both thebusmaster and socat script are running correctly.
+We have a raspberry pi connected to two nodes sending temperature, voltage, and current data over a can network. A busmaster program iscontrolling the network from the raspberry pi. The raspberry pi is also running [socat](http://www.dest-unreach.org/socat/),a networking tool that is being used to send messages on wifi. The android app will no work correctly unless both thebusmaster and socat script are running correctly.  
+
+More detailed setup info can be found at https://github.com/mpcrowe/canopen-raspberrypi
 
 ##Application Description
 ###The Main Screen
