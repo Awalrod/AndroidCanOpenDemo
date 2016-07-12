@@ -31,7 +31,10 @@ demonstrate a potential usage of the java-canopen package.
   `echo sdk.dir=/path/to/SDK > /path/to/AndroidCanOpenDemo/local.properties`  
  
   The second command will save the location.
-  Run `./gradlew assembleDebug`
+  Run `./gradlew assembleDebug`  
+
+
+
 ####Step 2: Install APK
 1. Locate APK at `AndroidCanOpenDemo/app/build/outputs/apk/app-debug.apk`  
 2. Connect your Android device via usb and allow use as a mass storage device.
