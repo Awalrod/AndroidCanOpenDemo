@@ -48,5 +48,5 @@ All of your current profiles are listed underneath the "Add Profile" button. To 
 
 #Links
 Repository for the fuel gauge widget: https://github.com/tethridge/fuel-gauge  
-Repository for the raspberry pi setup and code: https://github.com/mpcrowe/canopen-raspberrypi
+Repository for the raspberry pi setup and code: https://github.com/mpcrowe/canopen-raspberrypi  
 Repository for Java CanOpen code: https://github.com/Awalrod/CanOpenJavaLibrary
