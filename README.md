@@ -18,12 +18,12 @@ demonstrate a potential usage of the java-canopen package.
 ###If you do not have android studio installed:
 ####Step 1: Acquire APK
 1. Open a terminal and change directories to wherever you want to keep the `AndroidCanOpenDemo` directory
-2. Type the following commands:
+2. Type the following commands:  
   `git clone https://github.com/Awalrod/AndroidCanOpenDemo`  
   `cd AndroidCanOpenDemo`
 3. If you have the `ANDROID_HOME` environment variable already set, run `./gradlew assembleDebug`
 4. If you do not have the `ANDROID_HOME` environment variable already set, you need to find the location of your SDK.  
-  Once you've found it, one of the two following commands will work:
+  Once you've found it, one of the two following commands will work:  
   `export ANDROID_HOME=/path/to/SDK`
   
   or
@@ -41,7 +41,8 @@ demonstrate a potential usage of the java-canopen package.
 3. Move the APK file onto the Android Device.
 4. On the android Device, use a file browser to locate and install the APK. You may have to install your own browser as some devices do not come with one.
 
-Note: Third party apps must be enabled in your android settings
+Note: Third party apps must be enabled in your android settings  
+
 ##Network Setup[](TODO: Name busmaster and provide links)[](TODO: Get name of board being used)
 We have a raspberry pi connected to two nodes sending temperature, voltage, and current data over a can network. A busmaster program iscontrolling the network from the raspberry pi. The raspberry pi is also running [socat](http://www.dest-unreach.org/socat/),a networking tool that is being used to send messages on wifi. The android app will no work correctly unless both thebusmaster and socat script are running correctly.  
 
