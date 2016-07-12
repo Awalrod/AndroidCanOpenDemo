@@ -2,7 +2,7 @@
 A demo app that monitors a canopen network
 ##Synopsis[](TODO: Name the java-canopen package and provide links)
 This app is part of a [larger project](https://github.com/mpcrowe/canopen-raspberrypi) to control and monitor canopen networks from the conveniance of a mobile device.  
-A Java-CanOpen interface  listens to the network and updates the object dictionary accordingly. The subentries and values in them are represented by [profiles](#profiles) within the app
+A [Java-CanOpen interface](https://github.com/Awalrod/CanOpenJavaLibrary)  listens to the network and updates the object dictionary accordingly. The subentries and values in them are represented by [profiles](#profiles) within the app
 The application listens to events fired by changes in the object dictionary and acts upon them. This app is meant to 
 demonstrate a potential usage of the java-canopen package.  
 
@@ -49,3 +49,4 @@ All of your current profiles are listed underneath the "Add Profile" button. To 
 #Links
 Repository for the fuel gauge widget: https://github.com/tethridge/fuel-gauge  
 Repository for the raspberry pi setup and code: https://github.com/mpcrowe/canopen-raspberrypi
+Repository for Java CanOpen code: https://github.com/Awalrod/CanOpenJavaLibrary
